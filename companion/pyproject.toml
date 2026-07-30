@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "inkcards"
+version = "0.1.0"
+description = "Companion tools for InkCards: convert decks and inspect review progress"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "InkCards contributors" }]
+keywords = ["flashcards", "spaced-repetition", "anki", "e-ink", "esp32"]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+inkcards = "inkcards.cli:main"
+
+[tool.setuptools]
+packages = ["inkcards"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
