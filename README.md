@@ -176,6 +176,9 @@ pytest
 - [`docs/HARDWARE_TESTING.md`](docs/HARDWARE_TESTING.md): items to verify on a
   real device.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md): how to build, test and contribute.
+- [`CHANGELOG.md`](CHANGELOG.md): release history.
+- [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md): community expectations.
+- [`SECURITY.md`](SECURITY.md): how to report a vulnerability.
 
 ## Licence
 
