@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Question or discussion
+    url: https://github.com/mohitagw15856/inkcards/discussions
+    about: Ask a question or share a deck idea. For bugs and features, use the templates.
+  - name: Security report
+    url: https://github.com/mohitagw15856/inkcards/security/advisories/new
+    about: Please report vulnerabilities privately (see SECURITY.md), not as a public issue.

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="1014" viewBox="0 0 600 1014" role="img" aria-label="Session summary">
+  <rect x="8" y="8" width="584" height="998" rx="46" fill="#242a2c"/>
+  <rect x="54" y="58" width="492" height="812" rx="10" fill="#0d0f10"/>
+  <rect x="60" y="64" width="480" height="800" fill="#fcfbf7"/>
+  <g transform="translate(60 64)">
+    <text x="24" y="44" font-family="'DejaVu Sans','Segoe UI',Helvetica,Arial,sans-serif" font-size="28" font-weight="700" fill="#1b1b1a" text-anchor="start">HSK 1 Vocabulary</text>
+    <line x1="24" y1="64" x2="456" y2="64" stroke="#2a2a28" stroke-width="2"/>
+    <text x="240.0" y="170" font-family="'DejaVu Sans','Segoe UI',Helvetica,Arial,sans-serif" font-size="36" font-weight="700" fill="#1b1b1a" text-anchor="middle">Ready to study</text>
+    <text x="60" y="270" font-family="'DejaVu Sans','Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="400" fill="#6b6b66" text-anchor="start">Due today</text>
+    <text x="420" y="270" font-family="'DejaVu Sans','Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="700" fill="#1b1b1a" text-anchor="end">12</text>
+    <text x="60" y="332" font-family="'DejaVu Sans','Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="400" fill="#6b6b66" text-anchor="start">New cards</text>
+    <text x="420" y="332" font-family="'DejaVu Sans','Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="700" fill="#1b1b1a" text-anchor="end">8</text>
+    <text x="60" y="394" font-family="'DejaVu Sans','Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="400" fill="#6b6b66" text-anchor="start">Reviewed today</text>
+    <text x="420" y="394" font-family="'DejaVu Sans','Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="700" fill="#1b1b1a" text-anchor="end">0</text>
+    <text x="60" y="456" font-family="'DejaVu Sans','Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="400" fill="#6b6b66" text-anchor="start">Streak</text>
+    <text x="420" y="456" font-family="'DejaVu Sans','Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="700" fill="#1b1b1a" text-anchor="end">5 days</text>
+    <line x1="24" y1="744" x2="456" y2="744" stroke="#2a2a28" stroke-width="2"/>
+    <text x="24" y="778" font-family="'DejaVu Sans','Segoe UI',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#6b6b66" text-anchor="start">Confirm: start      Back: decks</text>
+  </g>
+  <rect x="74" y="918" width="92" height="40" rx="20" fill="#3a4245"/>
+  <rect x="194" y="918" width="92" height="40" rx="20" fill="#3a4245"/>
+  <rect x="314" y="918" width="92" height="40" rx="20" fill="#3a4245"/>
+  <rect x="434" y="918" width="92" height="40" rx="20" fill="#3a4245"/>
+  <text x="480" y="944" font-family="'DejaVu Sans','Segoe UI',Helvetica,Arial,sans-serif" font-size="18" fill="#dfe7e8" text-anchor="middle">Start</text>
+</svg>

@@ -47,12 +47,14 @@ On the desktop (the `inkcards` companion CLI):
 
 ## Screenshots
 
-<!-- Screenshots placeholder. Add device photos and companion output here once
-     captured on hardware (see docs/HARDWARE_TESTING.md). -->
+These are design mockups of the UI, generated from the layout in
+`firmware/src/ui/` by `docs/images/screens/generate_screens.py`. Real device
+photos will replace them once captured on hardware (see
+[`docs/HARDWARE_TESTING.md`](docs/HARDWARE_TESTING.md)).
 
-| Deck list | Reviewing a card | Session summary |
-| --------- | ---------------- | --------------- |
-| _todo_    | _todo_           | _todo_          |
+| Deck list | Reviewing a card | Answer + grades | Session summary |
+| :-------: | :--------------: | :-------------: | :-------------: |
+| <img src="docs/images/screens/deck-list.png" width="200"> | <img src="docs/images/screens/review-front.png" width="200"> | <img src="docs/images/screens/review-back.png" width="200"> | <img src="docs/images/screens/session-summary.png" width="200"> |
 
 ## Compatibility
 
@@ -174,6 +176,9 @@ pytest
 - [`docs/HARDWARE_TESTING.md`](docs/HARDWARE_TESTING.md): items to verify on a
   real device.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md): how to build, test and contribute.
+- [`CHANGELOG.md`](CHANGELOG.md): release history.
+- [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md): community expectations.
+- [`SECURITY.md`](SECURITY.md): how to report a vulnerability.
 
 ## Licence
 

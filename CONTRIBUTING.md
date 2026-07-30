@@ -5,7 +5,8 @@ bug reports, decks, documentation, companion features and firmware work.
 
 ## Ground rules
 
-- Be kind and constructive.
+- Be kind and constructive. This project follows a
+  [Code of Conduct](CODE_OF_CONDUCT.md).
 - Documentation uses British English and avoids em dashes.
 - Keep the device memory-disciplined: stream from the SD card, avoid large heap
   allocations, and pre-process heavy work in the companion tool rather than on
