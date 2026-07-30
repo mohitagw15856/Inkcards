@@ -1,0 +1,71 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="InkCards social preview">
+  <defs>
+    <linearGradient id="sbg" x1="0" y1="0" x2="1280" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F3238"/>
+      <stop offset="1" stop-color="#1E7F8C"/>
+    </linearGradient>
+    <linearGradient id="sbadge" x1="80" y1="70" x2="270" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2DB3A6"/>
+      <stop offset="1" stop-color="#1E7F8C"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#sbg)"/>
+
+  <!-- dotted e-ink texture -->
+  <g fill="#ffffff" opacity="0.05">
+    <circle cx="80" cy="520" r="5"/><circle cx="130" cy="560" r="5"/><circle cx="180" cy="520" r="5"/>
+    <circle cx="230" cy="560" r="5"/><circle cx="100" cy="590" r="5"/><circle cx="200" cy="590" r="5"/>
+  </g>
+
+  <!-- logo badge -->
+  <g transform="translate(90 96)">
+    <rect x="0" y="0" width="190" height="190" rx="42" fill="url(#sbadge)"/>
+    <g transform="rotate(-8 95 100)">
+      <rect x="40" y="50" width="100" height="108" rx="14" fill="#EDE8DB" stroke="#0F2B30" stroke-width="4"/>
+    </g>
+    <g transform="rotate(4 95 100)">
+      <rect x="48" y="44" width="100" height="112" rx="14" fill="#FFFFFF" stroke="#0F2B30" stroke-width="5"/>
+      <text x="56" y="130" font-family="'DejaVu Sans','Segoe UI',sans-serif" font-size="78" font-weight="800" fill="#0F2B30">A</text>
+      <circle cx="116" cy="72" r="5.5" fill="#0F2B30"/>
+      <circle cx="138" cy="72" r="5.5" fill="#0F2B30"/>
+      <path d="M114 86 Q127 99 141 86" stroke="#0F2B30" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+    </g>
+    <g stroke="#FFC24B" stroke-width="8" fill="none" stroke-linecap="round">
+      <path d="M144 144 a25 25 0 1 1 -11 -23"/>
+    </g>
+    <path d="M133 113 l4 15 l15 -4 z" fill="#FFC24B"/>
+  </g>
+
+  <text x="310" y="190" font-family="'DejaVu Sans','Segoe UI',sans-serif" font-size="104" font-weight="800" fill="#FFFFFF">InkCards</text>
+  <text x="314" y="250" font-family="'DejaVu Sans','Segoe UI',sans-serif" font-size="36" font-weight="500" fill="#BFE9E3">Spaced-repetition flashcards for the Xteink X4/X3</text>
+
+  <g font-family="'DejaVu Sans','Segoe UI',sans-serif" font-size="28" font-weight="600">
+    <rect x="314" y="290" width="132" height="52" rx="26" fill="#ffffff" opacity="0.12"/>
+    <text x="380" y="325" fill="#EAFBF8" text-anchor="middle">SM-2</text>
+    <rect x="462" y="290" width="190" height="52" rx="26" fill="#ffffff" opacity="0.12"/>
+    <text x="557" y="325" fill="#EAFBF8" text-anchor="middle">ESP32-C3</text>
+    <rect x="668" y="290" width="170" height="52" rx="26" fill="#ffffff" opacity="0.12"/>
+    <text x="753" y="325" fill="#EAFBF8" text-anchor="middle">CJK ready</text>
+  </g>
+
+  <!-- floating device preview on the right -->
+  <g transform="translate(300 372) rotate(-4)">
+    <rect x="0" y="0" width="680" height="210" rx="22" fill="#ffffff" opacity="0.08"/>
+  </g>
+  <g transform="translate(360 392)">
+    <rect x="0" y="0" width="560" height="180" rx="18" fill="#0d0f10"/>
+    <rect x="12" y="12" width="536" height="156" rx="10" fill="#fcfbf7"/>
+    <text x="150" y="96" font-family="'Noto Sans CJK SC','WenQuanYi Zen Hei',sans-serif" font-size="66" font-weight="700" fill="#1b1b1a" text-anchor="middle">你好</text>
+    <text x="150" y="132" font-family="'DejaVu Sans',sans-serif" font-size="26" fill="#6b6b66" text-anchor="middle">nǐ hǎo</text>
+    <line x1="300" y1="90" x2="520" y2="90" stroke="#cfccc4" stroke-width="2"/>
+    <text x="410" y="70" font-family="'DejaVu Sans',sans-serif" font-size="44" font-weight="700" fill="#1b1b1a" text-anchor="middle">hello</text>
+    <line x1="20" y1="126" x2="540" y2="126" stroke="#e2ded4" stroke-width="2"/>
+    <g font-family="'DejaVu Sans',sans-serif" font-size="19" font-weight="600" fill="#1b1b1a" text-anchor="middle">
+      <text x="80" y="153">Again</text>
+      <text x="213" y="153">Hard</text>
+      <text x="347" y="153">Good</text>
+      <text x="480" y="153">Easy</text>
+    </g>
+  </g>
+</svg>
