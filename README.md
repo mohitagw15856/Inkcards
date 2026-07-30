@@ -1,3 +1,15 @@
+<p align="center">
+  <img src="docs/images/banner.svg" alt="InkCards" width="820">
+</p>
+
+<p align="center">
+  <a href="#features">Features</a> &nbsp;&bull;&nbsp;
+  <a href="#quick-start-the-companion-tool">Companion</a> &nbsp;&bull;&nbsp;
+  <a href="#building-and-flashing-the-firmware">Firmware</a> &nbsp;&bull;&nbsp;
+  <a href="ARCHITECTURE.md">Architecture</a> &nbsp;&bull;&nbsp;
+  <a href="docs/FORMAT.md">Format</a>
+</p>
+
 # InkCards
 
 InkCards is an open-source spaced-repetition flashcard app for the
