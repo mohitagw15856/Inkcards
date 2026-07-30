@@ -7,7 +7,16 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
-Nothing yet.
+### Changed
+
+- **Shared device HAL via [`inkkit`](https://github.com/mohitagw15856/inkkit).**
+  The freeink-sdk-facing device glue (SD `HalFile` byte streaming, `Storage`
+  path/list/read/write helpers, and HalGPIO button plumbing) was extracted into
+  the `inkkit` PlatformIO library, shared with HabitInk. `platform/SdByteStream.h`,
+  `platform/InkCardsStorage.*` and `platform/InkInput.h` are now thin wrappers
+  over inkkit that keep the InkCards-specific logic (deck/state paths, the review
+  button map). inkkit is pulled in only by the `device` build via `lib_deps`, so
+  the CI-built `selftest` firmware and the host engine tests are unchanged.
 
 ## [0.1.0] - 2026-07-30
 

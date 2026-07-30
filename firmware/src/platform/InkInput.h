@@ -1,6 +1,8 @@
 // Logical button layer for InkCards, mapping the X4/X3 physical front buttons
-// onto the actions the review flow needs. Built directly on the FreeInk SDK's
-// HalGPIO so the standalone firmware does not depend on CrossPoint app code.
+// onto the actions the review flow needs. The raw HalGPIO sampling and edge
+// queries live in inkkit (inkkit/Buttons.h); this header keeps only the
+// InkCards-specific logical map so the firmware does not depend on CrossPoint
+// app code.
 //
 // The X4/X3 expose four front buttons plus a back/menu and power control. During
 // review the four front buttons double as the four grades, which is why the
@@ -8,7 +10,7 @@
 // physical button order. See docs/BUTTON_MAPPING.md.
 #pragma once
 
-#include <HalGPIO.h>
+#include <inkkit/Buttons.h>
 
 #include <cstdint>
 
@@ -32,12 +34,12 @@ struct InkButtonMap {
 
 class InkInput {
  public:
-  InkInput(HalGPIO& gpio, const InkButtonMap& map = InkButtonMap{}) : gpio_(gpio), map_(map) {}
+  InkInput(HalGPIO& gpio, const InkButtonMap& map = InkButtonMap{}) : buttons_(gpio), map_(map) {}
 
-  void update() const { gpio_.update(); }
+  void update() const { buttons_.update(); }
 
-  bool wasPressed(Btn b) const { return gpio_.wasPressed(indexOf(b)); }
-  bool isPressed(Btn b) const { return gpio_.isPressed(indexOf(b)); }
+  bool wasPressed(Btn b) const { return buttons_.wasPressed(indexOf(b)); }
+  bool isPressed(Btn b) const { return buttons_.isPressed(indexOf(b)); }
 
   // True if any of the four front buttons or Confirm was pressed this frame.
   // Used to reveal the answer, where the specific button does not matter.
@@ -47,7 +49,7 @@ class InkInput {
   }
 
  private:
-  HalGPIO& gpio_;
+  inkkit::Buttons buttons_;
   InkButtonMap map_;
 
   uint8_t indexOf(Btn b) const {
