@@ -1,0 +1,42 @@
+name: Feature request
+description: Suggest an idea or improvement
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What would you like to do?
+      description: Describe the use case or the problem you are trying to solve.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: How might InkCards support it? Sketches or examples welcome.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Studying and scheduling
+        - Deck format or conversion
+        - On-device UI
+        - Fonts and languages
+        - Companion CLI
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any workarounds you use today, or other approaches you thought about.
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Memory discipline
+      description: InkCards runs on a device with very little RAM.
+      options:
+        - label: I have considered whether this keeps heavy work on the desktop and streams from SD on the device.

@@ -1,0 +1,59 @@
+name: Bug report
+description: Something is not working as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug. Please fill in as much as you
+        can so we can reproduce it quickly.
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Where does the problem occur?
+      options:
+        - Firmware engine (inkcards_core)
+        - Firmware device app / UI
+        - Self-test firmware
+        - Companion CLI (convert)
+        - Companion CLI (stats)
+        - Documentation
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Commands, buttons pressed, or a sample deck. Attach a small .deck or .csv if relevant.
+      placeholder: |
+        1. Convert this CSV with `inkcards convert ...`
+        2. Copy to /inkcards/decks
+        3. Open the deck and press ...
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device
+      description: X4, X3, or desktop only.
+      placeholder: Xteink X4
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      description: The firmware version, or the commit you built from.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Serial log or output
+      description: Any serial output (self-test firmware) or CLI error text.
+      render: shell
