@@ -1,0 +1,41 @@
+# Reference material (studied, not distributed)
+/reference/
+
+# PlatformIO
+firmware/.pio/
+firmware/.cache/
+firmware/platformio.local.ini
+firmware/sdkconfig.*
+firmware/.dummy/
+firmware/CMakeLists.txt
+
+# Native/host build output
+firmware/test/build/
+build/
+*.o
+*.obj
+*.exe
+*.out
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.venv/
+venv/
+dist/
+*.egg
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated deck build artefacts are committed on purpose (see decks/),
+# so they are intentionally NOT ignored here.

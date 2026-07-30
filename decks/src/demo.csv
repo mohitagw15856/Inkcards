@@ -1,0 +1,6 @@
+front,pinyin,back,notes
+InkCards,,A spaced-repetition flashcard app for the Xteink X4/X3,This is the demo deck shown in the README.
+Spaced repetition,,A review schedule that shows a card just before you would forget it,InkCards uses the SM-2 algorithm.
+你好,nǐ hǎo,hello,SD-card fonts render CJK; see docs/FORMAT.md.
+Again / Hard / Good / Easy,,The four grades on the four front buttons,Left to right matches the physical button order.
+Streak,,The number of consecutive days you have studied,Shown on the session screen.

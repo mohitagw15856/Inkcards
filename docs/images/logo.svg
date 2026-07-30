@@ -1,0 +1,38 @@
+<svg width="360" height="360" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="InkCards logo">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="360" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2DB3A6"/>
+      <stop offset="1" stop-color="#1E7F8C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- rounded badge background -->
+  <rect x="8" y="8" width="344" height="344" rx="72" fill="url(#bg)"/>
+
+  <!-- back card (fanned) -->
+  <g transform="rotate(-11 180 190)">
+    <rect x="86" y="96" width="188" height="196" rx="22" fill="#E9E4D8" stroke="#0F2B30" stroke-width="6"/>
+  </g>
+  <!-- middle card -->
+  <g transform="rotate(-4 180 190)">
+    <rect x="92" y="90" width="188" height="200" rx="22" fill="#F4F1E8" stroke="#0F2B30" stroke-width="6"/>
+  </g>
+
+  <!-- front card with a friendly face -->
+  <g transform="rotate(5 180 190)">
+    <rect x="96" y="86" width="188" height="204" rx="22" fill="#FFFFFF" stroke="#0F2B30" stroke-width="7"/>
+    <!-- big letter on the card -->
+    <text x="132" y="212" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="128" font-weight="800" fill="#0F2B30">A</text>
+    <!-- eyes -->
+    <circle cx="215" cy="128" r="9" fill="#0F2B30"/>
+    <circle cx="252" cy="128" r="9" fill="#0F2B30"/>
+    <!-- smile -->
+    <path d="M212 150 Q233 172 256 150" stroke="#0F2B30" stroke-width="7" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- spaced-repetition loop arrow with a spark -->
+  <g stroke="#FFC24B" stroke-width="13" fill="none" stroke-linecap="round">
+    <path d="M262 250 a44 44 0 1 1 -18 -40"/>
+  </g>
+  <path d="M244 196 l6 24 l24 -6 z" fill="#FFC24B"/>
+</svg>

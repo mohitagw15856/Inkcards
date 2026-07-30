@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  engine-tests:
+    name: Firmware engine unit tests (host)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and run core tests
+        run: make -C firmware/test
+
+  companion-tests:
+    name: Companion CLI tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install companion
+        run: pip install -e "companion[dev]"
+      - name: Run pytest
+        run: pytest
+        working-directory: companion
+      - name: Sample decks are reproducible
+        run: |
+          python3 decks/build.py
+          git diff --exit-code -- decks/*.deck \
+            || (echo "Committed sample decks differ from decks/build.py output; run it and commit." && exit 1)
+
+  firmware-build:
+    name: Build self-test firmware (ESP32-C3)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Cache PlatformIO
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.platformio
+            ~/.cache/pip
+          key: pio-${{ runner.os }}-${{ hashFiles('firmware/platformio.ini') }}
+          restore-keys: pio-${{ runner.os }}-
+      - name: Install PlatformIO
+        run: pip install platformio
+      - name: Build selftest firmware
+        run: pio run -e selftest
+        working-directory: firmware
+      - name: Upload firmware artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: inkcards-selftest-firmware
+          path: firmware/.pio/build/selftest/firmware.bin
+          if-no-files-found: error
