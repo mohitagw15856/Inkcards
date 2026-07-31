@@ -1,8 +1,10 @@
-// SD-card path helpers and deck/state load-save glue for the device. Uses the
-// FreeInk SDK Storage API. Paths mirror docs/FORMAT.md.
+// SD-card path helpers and deck/state load-save glue for the device. The raw
+// Storage-singleton calls live in inkkit (inkkit/Storage.h); this header keeps
+// only the InkCards-specific paths and (de)serialization wiring. Paths mirror
+// docs/FORMAT.md.
 #pragma once
 
-#include <HalStorage.h>
+#include <inkkit/Storage.h>
 
 #include <string>
 #include <vector>
@@ -24,24 +26,20 @@ inline std::string statePathForDeckName(const std::string& deckName) {
 // Ensure the state directory exists (decks dir is created by the user copying
 // decks across). Safe to call repeatedly.
 inline void ensureStateDir() {
-  if (!Storage.exists("/inkcards")) Storage.mkdir("/inkcards");
-  if (!Storage.exists(kStateDir)) Storage.mkdir(kStateDir);
+  inkkit::sd::ensureDir("/inkcards");
+  inkkit::sd::ensureDir(kStateDir);
 }
 
-// List *.deck files under the decks directory.
-//
-// TODO(hardware-test): confirm the directory-listing API of the installed
-// freeink-sdk. CrossPoint iterates directories via HalStorage; the concrete
-// call is filled in here against that surface and should be verified on device.
+// List *.deck files under the decks directory. Defined in InkCardsStorage.cpp.
 std::vector<std::string> listDeckFiles();
 
 // Load a deck's review state from SD, or start fresh if no file exists yet.
 inline void loadReviewState(const std::string& deckName, ReviewStore& store) {
   store.reset();
   std::string path = statePathForDeckName(deckName);
-  if (!Storage.exists(path.c_str())) return;
+  if (!inkkit::sd::exists(path.c_str())) return;
   HalFile file;
-  if (!Storage.openFileForRead("INK", path.c_str(), file)) return;
+  if (!inkkit::sd::openRead("INK", path.c_str(), file)) return;
   SdFileReader reader(file);
   store.load(reader);  // on failure the store stays reset
   file.close();
@@ -52,7 +50,7 @@ inline bool saveReviewState(const std::string& deckName, const ReviewStore& stor
   ensureStateDir();
   std::string path = statePathForDeckName(deckName);
   HalFile file;
-  if (!Storage.openFileForWrite("INK", path.c_str(), file)) return false;
+  if (!inkkit::sd::openWrite("INK", path.c_str(), file)) return false;
   SdFileWriter writer(file);
   bool ok = store.save(writer);
   file.close();

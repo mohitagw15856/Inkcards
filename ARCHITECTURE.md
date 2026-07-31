@@ -28,9 +28,11 @@ self-contained application object with a simple begin/loop lifecycle) without
 depending on any hub existing today.
 
 **(c) Standalone firmware.** Chosen. InkCards ships as its own ESP32-C3
-firmware, but it does **not** reinvent the hardware layer: it builds on the
-**FreeInk SDK**, the same hardware SDK CrossPoint uses (display, GPIO, storage,
-clock), and it **reuses CrossPoint's SD-card font system unchanged**, reading
+firmware, but it does **not** reinvent the hardware layer: it depends on
+**[inkkit](https://github.com/mohitagw15856/inkkit)** (pinned in
+`firmware/platformio.ini`), which vendors the same HAL and hardware libraries
+CrossPoint uses (display, GPIO, storage, clock), and it **reuses CrossPoint's
+SD-card font system unchanged**, reading
 the same `.cpfont` families from `/.fonts` or `/fonts`. This satisfies the
 memory-discipline and font requirements while keeping InkCards small, focused
 and independently releasable.

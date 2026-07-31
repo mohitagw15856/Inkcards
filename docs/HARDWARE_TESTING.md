@@ -9,6 +9,12 @@ file lists every item that needs on-device confirmation. Each corresponds to a
 When you verify an item on hardware, update the code, remove the marker, and
 tick it off here.
 
+> The raw freeink-sdk calls behind the SD-storage, `HalFile` streaming and
+> HalGPIO items below now live in the shared [`inkkit`](https://github.com/mohitagw15856/inkkit)
+> library, which InkCards and HabitInk both consume. Confirming an SDK call
+> against real hardware there fixes it for both apps at once; the InkCards files
+> named below are the thin app-specific wrappers over inkkit.
+
 ## Firmware, device build (`firmware/src`)
 
 - [ ] **Front-button GPIO indices** (`platform/InkInput.h`). The logical
