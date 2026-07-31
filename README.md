@@ -19,7 +19,8 @@ e-ink screen with physical buttons, using the proven SM-2 algorithm.
 
 It is built for the same hardware as, and lives happily alongside,
 [CrossPoint Reader](https://github.com/crosspoint-reader/crosspoint-reader): it
-runs on the FreeInk SDK and reuses CrossPoint's SD-card font system, so a single
+gets its device layer from [inkkit](https://github.com/mohitagw15856/inkkit)
+and reuses CrossPoint's SD-card font system, so a single
 CJK font installed for CrossPoint also renders your Mandarin decks in InkCards.
 
 ## Features
@@ -68,7 +69,7 @@ card. See [`ARCHITECTURE.md`](ARCHITECTURE.md) for how the two relate.
 ```
 firmware/     ESP32-C3 firmware (PlatformIO)
   lib/inkcards_core/   portable engine: deck format, SM-2, review state
-  src/                 e-ink UI (FreeInk SDK)
+  src/                 e-ink UI (device layer via inkkit)
   selftest/            self-contained engine self-test firmware (CI-built)
   test/                host unit tests for the engine
 companion/    Python CLI: convert decks, read stats
@@ -125,10 +126,11 @@ The device creates `/inkcards/state/` for review progress on first use.
 
 InkCards uses [PlatformIO](https://platformio.org/).
 
-Two build environments are provided (see `firmware/platformio.ini`):
+Three build environments are provided (see `firmware/platformio.ini`); run
+them one at a time (concurrent `pio` invocations race on `~/.platformio`):
 
 - **`selftest`** (default): a self-contained ESP32-C3 image that validates the
-  deck engine over serial, with no external SDK. This is what CI builds.
+  deck engine over serial, with no device layer.
 
   ```sh
   cd firmware
@@ -137,17 +139,22 @@ Two build environments are provided (see `firmware/platformio.ini`):
   pio device monitor               # watch the self-test report decks on your card
   ```
 
-- **`device`**: the full e-ink UI, built against the FreeInk SDK. Check out the
-  `freeink-sdk` submodule and provide the `GfxRenderer` library (both MIT), then:
+- **`xteink_x4`** and **`xteink_x3`**: the full e-ink UI. The complete device
+  layer comes from [inkkit](https://github.com/mohitagw15856/inkkit), pinned in
+  `platformio.ini`; no submodules or additional SDK setup. The rendering stack
+  (GfxRenderer, EpdFont) is vendored under `firmware/lib/` from CrossPoint
+  Reader (MIT; see `firmware/lib/THIRD_PARTY.md`). The two environments build
+  identical firmware (the HAL detects X4 vs X3 at runtime) and exist so each
+  target ships a named binary.
 
   ```sh
   cd firmware
-  pio run -e device
-  pio run -e device -t upload
+  pio run -e xteink_x4
+  pio run -e xteink_x4 -t upload
   ```
 
-  The device UI has been written against the FreeInk SDK APIs and is pending
-  on-hardware verification; see [`docs/HARDWARE_TESTING.md`](docs/HARDWARE_TESTING.md).
+  Status: builds in CI, not yet verified on device; see
+  [`docs/HARDWARE_TESTING.md`](docs/HARDWARE_TESTING.md).
 
 ## Running the tests
 

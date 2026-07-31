@@ -17,7 +17,10 @@
 #include <HalStorage.h>
 #include <Logging.h>
 
+#include <ctime>
+
 #include "InkCardsApp.h"
+#include "TimeUtil.h"
 #include "platform/InkInput.h"
 #include "ui/Theme.h"
 
@@ -41,12 +44,14 @@ static SessionConfig sessionConfig = {/*newCardsPerDay=*/20, /*maxReviews=*/0};
 static int32_t gTzOffsetSeconds = 0;
 
 static uint32_t currentDay() {
-  // HalClock provides Unix time when the RTC is set; fall back to millis-based
-  // day 0 so the scheduler still runs on a device with no clock.
-  // TODO(hardware-test): confirm HalClock's accessor on the installed SDK.
-  uint64_t unix = HalClock::nowUnix();
-  if (unix == 0) return 0;
-  return dayNumber(unix, gTzOffsetSeconds);
+  // halClock.begin() seeds the system clock from the RTC where one is present,
+  // so time() carries Unix time from then on (the same pattern HalClock uses
+  // internally). On a device with no clock, time() stays near the epoch and
+  // every session lands on day 0, which keeps the scheduler well-defined.
+  // TODO(hardware-test): confirm the RTC seeds time() on real hardware.
+  const time_t unix = time(nullptr);
+  if (unix <= 0) return 0;
+  return dayNumber(static_cast<uint64_t>(unix), gTzOffsetSeconds);
 }
 
 // Provision the fonts the UI draws with. InkCards does not embed fonts: it
@@ -70,16 +75,17 @@ static void setupFonts() {
   fonts.body = 0;
   fonts.head = 0;
   fonts.card = 0;
-  LOG_WARN("INK", "setupFonts: SD-card font wiring pending on-device integration");
+  LOG_INF("INK", "setupFonts: SD-card font wiring pending on-device integration");
 }
 
 static InkCardsApp* app = nullptr;
 
 void setup() {
   Serial.begin(115200);
-  LOG_INFO("INK", "InkCards starting");
+  LOG_INF("INK", "InkCards starting");
 
   gpio.begin();
+  halClock.begin();
   if (!Storage.begin()) {
     LOG_ERR("INK", "SD storage init failed");
   }

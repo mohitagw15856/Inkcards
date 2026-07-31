@@ -54,12 +54,32 @@ jobs:
           restore-keys: pio-${{ runner.os }}-
       - name: Install PlatformIO
         run: pip install platformio
+      # Environments build one at a time: pio package installs are not safe to
+      # run concurrently against a shared ~/.platformio.
       - name: Build selftest firmware
         run: pio run -e selftest
         working-directory: firmware
-      - name: Upload firmware artefact
+      - name: Build X4 firmware
+        run: pio run -e xteink_x4
+        working-directory: firmware
+      - name: Build X3 firmware
+        run: pio run -e xteink_x3
+        working-directory: firmware
+      - name: Upload selftest artefact
         uses: actions/upload-artifact@v4
         with:
           name: inkcards-selftest-firmware
           path: firmware/.pio/build/selftest/firmware.bin
+          if-no-files-found: error
+      - name: Upload X4 artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: inkcards-xteink_x4-firmware
+          path: firmware/.pio/build/xteink_x4/firmware.bin
+          if-no-files-found: error
+      - name: Upload X3 artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: inkcards-xteink_x3-firmware
+          path: firmware/.pio/build/xteink_x3/firmware.bin
           if-no-files-found: error
